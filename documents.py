@@ -83,10 +83,8 @@ class PDFDocument(TemplateView):
         :return: The context instance (Context)
         """
         # ctx = RequestContext(self.request)
-        try:
-            ctx = RequestContext(self.request)
-        except AttributeError:
-            ctx = {}
+
+        ctx = {}
         ctx['title'] = self.DocumentMeta.title
         ctx['author'] = self.DocumentMeta.author
         ctx['description'] = self.DocumentMeta.description
