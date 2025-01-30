@@ -78,10 +78,10 @@ class DocMaker(object):
                 del self._registry[document_klass.__name__]
 
     def get_urls(self):
-        from django.conf.urls import url
+        from django.urls import re_path
         urlpatterns = []
         for name, view in self._registry.items():
-            urlpatterns.append(url(r'^{name}/$'.format(name=view.url_name), view.as_view(), name=name))
+            urlpatterns.append(re_path(r'^{name}/$'.format(name=view.url_name), view.as_view(), name=name))
         return urlpatterns
 
     @property

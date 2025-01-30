@@ -38,7 +38,7 @@ class PDFDocument(TemplateView):
     def get(self, request):
         # first, check if this report is for authenticated users only
         if self.login_required:
-            if not request.user.is_authenticated():
+            if not request.user.is_authenticated:
                 # raise a permission denied
                 raise PermissionDenied
 
