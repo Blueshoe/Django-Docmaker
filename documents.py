@@ -4,7 +4,6 @@ import logging
 from django.contrib.staticfiles import finders
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.template.context import RequestContext
 from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
 from weasyprint import CSS, HTML
