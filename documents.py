@@ -4,7 +4,6 @@ import logging
 from django.contrib.staticfiles import finders
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
-from django.template.context import RequestContext
 from django.template.loader import render_to_string
 from django.views.generic.base import TemplateView
 from weasyprint import CSS, HTML
@@ -38,7 +37,7 @@ class PDFDocument(TemplateView):
     def get(self, request):
         # first, check if this report is for authenticated users only
         if self.login_required:
-            if not request.user.is_authenticated():
+            if not request.user.is_authenticated:
                 # raise a permission denied
                 raise PermissionDenied
 
