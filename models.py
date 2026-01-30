@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 import importlib
-import imp as _imp
+import importlib.util
 
 
 # autodiscover all documents
@@ -19,9 +19,9 @@ def autodiscover_documents():
         except AttributeError:
             continue
 
-        try:
-            _imp.find_module('documents', pkg_path)
-        except ImportError:
+        # Check if 'documents' module exists in this package
+        spec = importlib.util.find_spec(f'{app}.documents')
+        if spec is None:
             continue
 
         importlib.import_module('{0}.{1}'.format(app, 'documents'))
